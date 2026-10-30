@@ -1,0 +1,14 @@
+.git
+.gitignore
+.dockerignore
+.env
+telegram.env
+credentials.env
+*.log
+*.sqlite
+*.sqlite3
+__pycache__/
+*.py[cod]
+README.md
+test_trade_alerts.py
+valve.sh

@@ -1,0 +1,24 @@
+services:
+  trade-alerts:
+    build:
+      context: .
+    command:
+      - --watch
+    environment:
+      MARKET_ITEM_ID: propellant-valve-assembly
+      MARKET_LISTING_TYPE: sell
+      POLL_INTERVAL_SECONDS: "300"
+      TRADE_ALERTS_DB: /data/trade-alerts.sqlite3
+    restart: unless-stopped
+    secrets:
+      - source: telegram_credentials
+        target: telegram_credentials
+    volumes:
+      - trade-alerts-data:/data
+
+secrets:
+  telegram_credentials:
+    file: ${TELEGRAM_ENV_FILE:-./telegram.env}
+
+volumes:
+  trade-alerts-data:
